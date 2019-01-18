@@ -12,6 +12,7 @@
 --     name VARCHAR(20) NOT NULL,
 --     description VARCHAR(255) NOT NULL,
 --     userId VARCHAR(255),
+--     isPrivate TINYINT,
 --     INDEX userId (userId),
 --     FOREIGN KEY (userId)
 --         REFERENCES users(id)
@@ -58,11 +59,3 @@
 --         REFERENCES keeps(id)
 --         ON DELETE CASCADE
 -- )
-
-
--- -- USE THIS LINE FOR GET KEEPS BY VAULTID
--- SELECT * FROM vaultkeeps vk
--- INNER JOIN keeps k ON k.id = vk.keepId 
--- WHERE (vaultId = @vaultId AND vk.userId = @userId) 
-
-
