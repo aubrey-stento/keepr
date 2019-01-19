@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using keepr.Models;
 using keepr.Repositories;
 using Microsoft.AspNetCore.Authorization;
@@ -21,6 +22,30 @@ namespace Keepr.Controllers
             var id = HttpContext.User.Identity.Name;
             keep.UserId = id;
             return Ok(_repo.AddKeep(keep));
+        }
+        [Authorize]
+        [HttpDelete("{keepid}")]
+        public ActionResult<string> Delete(int keepid)
+        {
+            var id = HttpContext.User.Identity.Name;
+            if (_repo.DeleteKeep(keepid, id))
+            {
+                return Ok("Successfully Deleted");
+            }
+            return BadRequest("Unable to Delete!");
+        }
+
+        [Authorize]
+        [HttpGet("{userId}")]
+        // GET KEEPS BY USERID
+        public ActionResult<IEnumerable<Keep>> GetKeepsByUserId(string userId)
+        {
+            IEnumerable<Keep> result = _repo.GetKeepsByUserId(userId);
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Data;
 using Dapper;
 using keepr.Models;
@@ -19,6 +20,20 @@ namespace keepr.Repositories
             newkeep.Id = id;
             return newkeep;
         }
+
+        public bool DeleteKeep(int vId, string userId)
+        {
+            int success = _db.Execute(@"DELETE FROM Keeps WHERE id = @vId AND userId = @userId", new { vId, userId });
+            return success != 0;
+        }
+
+        // GET KEEPS BY USERID
+
+        public IEnumerable<Keep> GetKeepsByUserId(string userId)
+        {
+            return _db.Query<Keep>($"SELECT * FROM Keeps WHERE userId = @userId", new { userId });
+        }
+
     }
 }
 

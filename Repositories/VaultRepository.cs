@@ -25,7 +25,7 @@ namespace keepr.Repositories
 
 
         }
-
+        // DELETE VAULTS CREATED BY USER
         public bool DeleteVault(int vId, string userId)
         {
             int success = _db.Execute(@"DELETE FROM Vaults WHERE id = @vId AND userId = @userId", new { vId, userId });
