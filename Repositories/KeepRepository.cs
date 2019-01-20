@@ -36,6 +36,11 @@ namespace keepr.Repositories
 
         // GET ALL KEEPS
 
+        public IEnumerable<Keep> GetAll()
+        {
+            return _db.Query<Keep>("SELECT * FROM Keeps");
+        }
+
     }
 }
 

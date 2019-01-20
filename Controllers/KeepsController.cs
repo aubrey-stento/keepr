@@ -49,5 +49,10 @@ namespace Keepr.Controllers
         }
 
         // GET ALL KEEPS
+        [HttpGet]
+        public ActionResult<IEnumerable<Keep>> Get()
+        {
+            return Ok(_repo.GetAll());
+        }
     }
 }
