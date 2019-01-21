@@ -48,11 +48,24 @@ namespace Keepr.Controllers
             return BadRequest();
         }
 
-        // GET ALL KEEPS
+        // GET ALL PUBLIC KEEPS
         [HttpGet]
         public ActionResult<IEnumerable<Keep>> Get()
         {
             return Ok(_repo.GetAllPublicKeeps());
+        }
+
+        // Edit keeps
+
+        [HttpPut("{id}")]
+        public ActionResult<Keep> Put(int id, [FromBody] Keep keep)
+        {
+            Keep result = _repo.GetOneByIdAndUpdate(id, keep);
+            if (result != null)
+            {
+                return result;
+            }
+            return NotFound();
         }
     }
 }
