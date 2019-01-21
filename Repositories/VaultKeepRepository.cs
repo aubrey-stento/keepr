@@ -26,6 +26,17 @@ namespace keepr.Repositories
             return vk;
         }
 
+        // get keeps by vaultId
+
+        public IEnumerable<Keep> GetKeepsByVaultId(int id)
+        {
+            return _db.Query<Keep>($@"
+            SELECT * FROM vaultkeeps vk
+            INNER JOIN keeps k ON k.id = vk.keepId
+            WHERE (vaultId = @id);
+            ", new { id });
+        }
+
         // get vaultkeeps by vaultid
 
         public IEnumerable<VaultKeep> GetVaultKeepsByVaultId(int vaultId)

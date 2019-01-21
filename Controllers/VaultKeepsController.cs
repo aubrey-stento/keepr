@@ -29,6 +29,20 @@ namespace Keepr.Controllers
 
         }
 
+        // GET KEEPS BY VAULTID
+        [Authorize]
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<Keep>> Get(int id)
+        {
+            IEnumerable<Keep> result = _vaultKeepRepo.GetKeepsByVaultId(id);
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+
         // GET VAULTKEEPS BY VAULTID
 
         [Authorize]
@@ -36,6 +50,7 @@ namespace Keepr.Controllers
 
         public ActionResult<IEnumerable<VaultKeep>> GetVaultKeepsByVaultId(int vaultId)
         {
+            var id = HttpContext.User.Identity.Name;
             IEnumerable<VaultKeep> result = _vaultKeepRepo.GetVaultKeepsByVaultId(vaultId);
             if (result != null)
             {
