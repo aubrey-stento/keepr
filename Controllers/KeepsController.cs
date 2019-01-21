@@ -52,7 +52,7 @@ namespace Keepr.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Keep>> Get()
         {
-            return Ok(_repo.GetAll());
+            return Ok(_repo.GetAllPublicKeeps());
         }
     }
 }

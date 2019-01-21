@@ -36,9 +36,9 @@ namespace keepr.Repositories
 
         // GET ALL KEEPS
 
-        public IEnumerable<Keep> GetAll()
+        public IEnumerable<Keep> GetAllPublicKeeps()
         {
-            return _db.Query<Keep>("SELECT * FROM Keeps");
+            return _db.Query<Keep>("SELECT * FROM Keeps WHERE IsPrivate = 0");
         }
 
     }
