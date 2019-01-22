@@ -10,12 +10,12 @@
                 <p class="textSpace"> <i class="fab fa-kaggle"></i> {{keep.keeps}}</p>
 
             </div>
-            <VaultForm></VaultForm>
+
         </div>
     </div>
 </template>
 <script>
-    import VaultForm from "@/components/createVault.vue";
+
     export default {
         name: 'keep',
         props: ['keepId'],
@@ -41,7 +41,7 @@
             }
         },
         components: {
-            VaultForm
+
         }
     }
 </script>

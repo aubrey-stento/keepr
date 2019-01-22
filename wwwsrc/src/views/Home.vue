@@ -2,7 +2,7 @@
   <div class="home container-fluid">
     <div class="row">
       <div class="col-12">
-        <input type="text" v-model="search" class="form-control" placeholder="Search Keeps" />
+        <input type="text" v-model="search" class="form-control mb-5" placeholder="Search Keeps" />
         <li v-show="'search'.includes(filteredKeeps)"></li>
       </div>
 
@@ -18,6 +18,7 @@
               <p class="textSpace">Description: {{keep.description}}</p>
               <p class="textSpace"> <i class="far fa-eye"></i> {{keep.views}}</p>
               <p class="textSpace"> <i class="fas fa-share"></i> {{keep.shares}}</p>
+              <p class="textSpace"> <i class="fab fa-kaggle"></i> {{keep.keeps}}</p>
 
             </router-link>
           </div>
@@ -26,7 +27,7 @@
       </div>
     </div>
 
-    <h1>Welcome Home</h1>
+
   </div>
 
 

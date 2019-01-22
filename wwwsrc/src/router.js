@@ -5,6 +5,7 @@ import Home from './views/Home.vue'
 // @ts-ignore
 import Login from './views/Login.vue'
 import Keep from './views/Keep.vue'
+import userDash from './views/UserDash.vue'
 
 Vue.use(Router)
 
@@ -25,6 +26,15 @@ export default new Router({
       path: '/keep/:keepId',
       component: Keep,
       name: 'keep'
+    },
+    {
+      path: '/userDash/',
+      name: 'userDash',
+      component: userDash
+    },
+    {
+      path: "*",
+      redirect: '/'
     }
   ]
 })

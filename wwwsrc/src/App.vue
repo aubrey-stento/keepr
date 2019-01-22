@@ -3,8 +3,9 @@
     <div id="nav">
       <nav class="navbar navbar-expand-sm navbar-muted bg-light navColor">
         <a class="navbar-brand fab fa-kaggle" href="#/">eepr</a>
-        <button type="button" class="btn btn-default navbar-btn">Sign in</button>
-        <button type="button" class="btn btn-default navbar-btn" @click="logout">Logout</button>
+        <button type="button" class="btn btn-default navbar-btn" v-if="!user.id">Sign in</button>
+        <button type="button" class="btn btn-default navbar-btn" v-else="user.id" @click="logout">Logout</button>
+        <a class="navbar-brand" href="#/userDash">UserDash</a>
       </nav>
     </div>
     <router-view />
