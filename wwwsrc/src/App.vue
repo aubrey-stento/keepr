@@ -1,13 +1,30 @@
 <template>
   <div id="app">
     <div id="nav">
-      <nav class="navbar navbar-expand-sm navbar-muted bg-muted navColor">
-
+      <nav class="navbar navbar-expand-sm navbar-muted bg-light navColor">
+        <a class="navbar-brand fab fa-kaggle" href="#/">eepr</a>
+        <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+        <button type="button" class="btn btn-default navbar-btn" @click="logout">Logout</button>
       </nav>
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+  export default {
+    computed: {
+      user() {
+        return this.$store.state.user
+      }
+    },
+    methods: {
+      logout() {
+        this.$store.dispatch("logout")
+      }
+    }
+  }
+</script>
 
 <style>
   #app {

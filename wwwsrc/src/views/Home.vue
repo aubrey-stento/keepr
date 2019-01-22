@@ -5,7 +5,7 @@
         <input type="text" v-model="search" class="form-control" placeholder="Search Keeps" />
         <li v-show="'search'.includes(filteredKeeps)"></li>
       </div>
-      <button @click="logout">Logout</button>
+
     </div>
 
     <div class="row">
@@ -63,9 +63,7 @@
       }
     },
     methods: {
-      logout() {
-        this.$store.dispatch("logout")
-      }
+
     }
   };
 </script>
