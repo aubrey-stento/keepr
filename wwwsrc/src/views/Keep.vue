@@ -1,7 +1,8 @@
 <template>
     <div class="keep container">
-        <div class="row">
-            <div class="col-8 card">
+        <div class="row d-flex justify-content-center">
+            <div class="col-8 card ">
+                <img class="imgSize" :src='keep.img' height="400px">
                 <p>Name: {{keep.name}}</p>
                 <p>Description: {{keep.description}}</p>
                 <img :src="keep.image">

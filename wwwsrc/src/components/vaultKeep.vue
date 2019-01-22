@@ -1,0 +1,26 @@
+<template>
+    <div class="">
+
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'vaultKeep',
+        data() {
+            return {
+
+            }
+        },
+        computed: {
+
+        },
+        methods: {}
+    }
+
+</script>
+
+<style>
+
+
+</style>

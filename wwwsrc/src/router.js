@@ -6,6 +6,7 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Keep from './views/Keep.vue'
 import userDash from './views/UserDash.vue'
+import vault from './views/Vault.vue'
 
 Vue.use(Router)
 
@@ -31,6 +32,13 @@ export default new Router({
       path: '/userDash/',
       name: 'userDash',
       component: userDash
+    },
+    {
+      path: '/vaults/:vaultId',
+      name: 'vault',
+      component: vault,
+      props: true
+
     },
     {
       path: "*",

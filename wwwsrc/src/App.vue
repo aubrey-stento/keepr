@@ -23,7 +23,11 @@
       logout() {
         this.$store.dispatch("logout")
       }
-    }
+    },
+    mounted() {
+      //checks for valid session
+      this.$store.dispatch("authenticate");
+    },
   }
 </script>
 

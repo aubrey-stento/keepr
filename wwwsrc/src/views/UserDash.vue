@@ -5,13 +5,16 @@
 
         <VaultForm></VaultForm>
         <Vaults></Vaults>
+        <KeepForm></KeepForm>
 
     </div>
 </template>
 
 <script>
     import VaultForm from "@/components/createVault.vue";
-    import Vaults from "@/components/vaults.vue"
+    import Vaults from "@/components/vaults.vue";
+    import KeepForm from "@/components/createKeep.vue";
+
     export default {
         name: 'userDash',
         data() {
@@ -27,7 +30,9 @@
         methods: {},
         components: {
             VaultForm,
-            Vaults
+            Vaults,
+            KeepForm,
+            // Keeps
         }
     }
 

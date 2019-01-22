@@ -13,14 +13,25 @@
         <div v-for="keep in filteredKeeps">
           <div class="card">
             <router-link :to="{name: 'keep', params: {keepId: keep.id, keep: keep}}">
-              <img class="imgSize" :src='keep.img'>
+              <img class="imgSize" :src='keep.img' height="250px">
               <p class="textSpace">Name: {{keep.name}}</p>
               <p class="textSpace">Description: {{keep.description}}</p>
-              <p class="textSpace"> <i class="far fa-eye"></i> {{keep.views}}</p>
-              <p class="textSpace"> <i class="fas fa-share"></i> {{keep.shares}}</p>
-              <p class="textSpace"> <i class="fab fa-kaggle"></i> {{keep.keeps}}</p>
-
             </router-link>
+            <p class="textSpace"> <i class="far fa-eye"></i> {{keep.views}}</p>
+            <p class="textSpace"> <i class="fas fa-share"></i> {{keep.shares}}</p>
+            <p class="textSpace"> <i class="fab fa-kaggle"></i> {{keep.keeps}}</p>
+
+
+            <div class="dropdown">
+              <button class="btn btn-sm dropdown-toggle icon" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"><i class="fab fa-kaggle"> </i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <p class="dropdown-item action" v-for="vault in vaults" @click="addToVault(vault.id, keep, user)"
+                  :vaultData="vault" v-bind:value="vault.id">{{vault.name}}</p>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -47,12 +58,16 @@
       // if (!this.$store.state.user.id) {
       //   this.$router.push({ name: "login" });
       // }
-      this.$store.dispatch("getAllPublicKeeps")
+      this.$store.dispatch("getAllPublicKeeps"),
+        this.$store.dispatch("getVaults")
     },
 
     computed: {
       keeps() {
         return this.$store.state.keeps
+      },
+      vaults() {
+        return this.$store.state.vaults
       },
       filteredKeeps: function () {
         return this.keeps.filter((keep) => {
@@ -64,6 +79,15 @@
       }
     },
     methods: {
+      addToVault(vaultId, keep, user) {
+        let payload = {
+          keepId: keep.id,
+          vaultId: vaultId,
+          userId: user.id
+        }
+        console.log(payload)
+        this.$store.dispatch('addToVault', payload)
+      }
 
     }
   };
