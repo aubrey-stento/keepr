@@ -2,8 +2,8 @@
     <div class="vaultForm">
         <form @submit.prevent="createVault">
             <div class="form-group">
-                <input class="form-control" type="text" placeholder="Name" v-model="formData.name">
-                <input class="form-control" type="text" placeholder="Description" v-model="formData.description">
+                <input class="form-control" type="text" placeholder="Name" v-model="vaultData.name">
+                <input class="form-control" type="text" placeholder="Description" v-model="vaultData.description">
                 <button type="submit" class="btn btn-sm btn-info">Create Vault</button>
             </div>
         </form>
@@ -16,32 +16,29 @@
         name: 'VaultForm',
         data() {
             return {
-                formData: {
+                vaultData: {
                     name: '',
                     description: ''
                 }
             }
         },
         computed: {
-            // vaults() {
-            //     return this.$store.state.vaults
-            // },
+            vaults() {
+                return this.$store.state.vaults
+            },
             user() {
                 return this.$store.state.user
-            },
-            methods: {
-                createVault() {
-                    this.formData.creatorName = this.user.name
-                    // this.formData.vaultName = this.vault.name
-                    this.$store.dispatch('createVault', this.formData)
-                    this.formData = {
-                        name: '',
-                        description: ''
-                    }
+            }
+        },
+        methods: {
 
-                }
+            createVault() {
+                debugger
+                this.$store.dispatch('createVault', this.vaultData)
+
             }
         }
+
     }
 
 </script>

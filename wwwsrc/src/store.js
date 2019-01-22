@@ -115,9 +115,10 @@ export default new Vuex.Store({
     // VAULTS
 
     createVault({ commit, dispatch }, vaultData) {
+      debugger
       api.post('vaults', vaultData)
         .then(res => {
-          console.log("vault: ", res.data)
+          console.log(res.data)
           commit('setVault', res.data)
         })
     }
