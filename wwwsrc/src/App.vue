@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <div id="nav">
+      <nav class="navbar navbar-expand-sm navbar-muted bg-muted navColor">
+
+      </nav>
+    </div>
     <router-view />
   </div>
 </template>

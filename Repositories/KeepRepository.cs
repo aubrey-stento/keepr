@@ -43,6 +43,13 @@ namespace keepr.Repositories
             return _db.Query<Keep>("SELECT * FROM Keeps WHERE IsPrivate = 0");
         }
 
+        // GET KEEP BY KEEPID
+
+        public Keep GetKeepById(int id)
+        {
+            return _db.QueryFirstOrDefault<Keep>("SELECT * FROM Keeps WHERE id=@id", new { id });
+        }
+
         // EDIT A KEEP
 
         public Keep GetOneByIdAndUpdate(int id, Keep newkeep)

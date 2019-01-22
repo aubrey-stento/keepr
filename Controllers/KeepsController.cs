@@ -36,11 +36,12 @@ namespace Keepr.Controllers
         }
 
         [Authorize]
-        [HttpGet("{userId}")]
+        [HttpGet("user")]
         // GET KEEPS BY USERID
-        public ActionResult<IEnumerable<Keep>> GetKeepsByUserId(string userId)
+        public ActionResult<IEnumerable<Keep>> GetKeeps()
         {
-            IEnumerable<Keep> result = _repo.GetKeepsByUserId(userId);
+            var id = HttpContext.User.Identity.Name;
+            IEnumerable<Keep> result = _repo.GetKeepsByUserId(id);
             if (result != null)
             {
                 return Ok(result);
@@ -53,6 +54,19 @@ namespace Keepr.Controllers
         public ActionResult<IEnumerable<Keep>> Get()
         {
             return Ok(_repo.GetAllPublicKeeps());
+        }
+
+        // GET KEEP BY KEEPID
+
+        [HttpGet("{id}")]
+        public ActionResult<Keep> GetKeep(int id)
+        {
+            Keep result = _repo.GetKeepById(id);
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return NotFound();
         }
 
         // Edit keeps

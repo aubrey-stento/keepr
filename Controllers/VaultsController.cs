@@ -37,11 +37,27 @@ namespace Keepr.Controllers
         }
 
         [Authorize]
-        [HttpGet("{userId}")]
+        [HttpGet]
         // GET VAULTS BY USERID
-        public ActionResult<IEnumerable<Vault>> GetVaultsByUserId(string userId)
+        public ActionResult<IEnumerable<Vault>> GetVaults()
         {
-            IEnumerable<Vault> result = _repo.GetVaultsByUserId(userId);
+            var id = HttpContext.User.Identity.Name;
+            IEnumerable<Vault> result = _repo.GetVaults(id);
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+        // Get VAULT BY VAULTID
+
+        [Authorize]
+        [HttpGet("{vaultId}")]
+        public ActionResult<IEnumerable<Vault>> GetVault(int vaultId)
+        {
+            var id = HttpContext.User.Identity.Name;
+            IEnumerable<Vault> result = _repo.GetVault(vaultId, id);
             if (result != null)
             {
                 return Ok(result);

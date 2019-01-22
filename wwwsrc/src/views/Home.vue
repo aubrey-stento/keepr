@@ -10,11 +10,14 @@
 
     <div class="row">
       <div class="card-columns count">
-        <div v-for="keeps in filteredKeeps">
+        <div v-for="keep in filteredKeeps">
           <div class="card">
-            <router-link :to="{name: 'keep', params: {keepId: keep._id, keep: keep}}">
-              <img class="imgSize" :src='keep.image'>
-              <p class="textSpace">{{keeps.name}}</p>
+            <router-link :to="{name: 'keep', params: {keepId: keep.id, keep: keep}}">
+              <img class="imgSize" :src='keep.img'>
+              <p class="textSpace">Name: {{keep.name}}</p>
+              <p class="textSpace">Description: {{keep.description}}</p>
+              <p class="textSpace"> <i class="far fa-eye"></i> {{keep.views}}</p>
+              <p class="textSpace"> <i class="fas fa-share"></i> {{keep.shares}}</p>
 
             </router-link>
           </div>
@@ -55,6 +58,9 @@
           return keep.name.toLowerCase().includes(this.search.toLowerCase())
         })
       },
+      user() {
+        return this.$store.state.user
+      }
     },
     methods: {
       logout() {
@@ -63,3 +69,8 @@
     }
   };
 </script>
+<style>
+  .count {
+    column-count: 4;
+  }
+</style>

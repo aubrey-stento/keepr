@@ -37,16 +37,16 @@ namespace keepr.Repositories
             ", new { id });
         }
 
-        // get vaultkeeps by vaultid
+        // // get vaultkeeps by vaultid
 
-        public IEnumerable<VaultKeep> GetVaultKeepsByVaultId(int vaultId)
-        {
-            return _db.Query<VaultKeep>($@"
-            SELECT * FROM vaultkeeps vk
-            INNER JOIN keeps k ON k.id = vk.keepId
-            WHERE (vaultId = @vaultId);
-            ", new { vaultId });
-        }
+        // public IEnumerable<VaultKeep> GetVaultKeepsByVaultId(int vaultId)
+        // {
+        //     return _db.Query<VaultKeep>($@"
+        //     SELECT * FROM vaultkeeps vk
+        //     INNER JOIN keeps k ON k.id = vk.keepId
+        //     WHERE (vaultId = @vaultId);
+        //     ", new { vaultId });
+        // }
 
         // DELETE VAULTKEEPS BY USERID && KEEPID
 

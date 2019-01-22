@@ -20,7 +20,8 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     user: {},
-    keeps: []
+    keeps: [],
+    activeKeep: {}
   },
   mutations: {
     setUser(state, user) {
@@ -31,6 +32,9 @@ export default new Vuex.Store({
     },
     setKeeps(state, keeps) {
       state.keeps = keeps
+    },
+    setActiveKeep(state, activeKeep) {
+      state.activeKeep = activeKeep
     }
   },
 
@@ -70,6 +74,7 @@ export default new Vuex.Store({
       auth.delete('logout')
         .then(res => {
           commit('logout')
+          router.push({ name: 'login' })
         })
     },
 
@@ -80,6 +85,23 @@ export default new Vuex.Store({
         .then(res => {
           console.log(res)
           commit('setKeeps', res.data)
+        })
+    },
+
+    getKeepById({ commit, dispatch }, keepId) {
+      debugger
+      api.get('keeps/' + keepId)
+        .then(res => {
+          console.log(res.data)
+          commit('setActiveKeep', res.data)
+        })
+    },
+
+    updateKeep({ commit, dispatch }, keepId) {
+      api.put('keeps/' + keepId)
+        .then(res => {
+          commit('setKeeps', res.data)
+          dispatch('getAllPublicKeeps', res.data)
         })
     }
 

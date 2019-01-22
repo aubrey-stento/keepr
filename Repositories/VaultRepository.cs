@@ -35,11 +35,16 @@ namespace keepr.Repositories
 
         // GET VAULTS BY USERID
 
-        public IEnumerable<Vault> GetVaultsByUserId(string userId)
+        public IEnumerable<Vault> GetVaults(string userId)
         {
             return _db.Query<Vault>($"SELECT * FROM Vaults WHERE userId = @userId", new { userId });
         }
 
+
+        public IEnumerable<Vault> GetVault(int vaultId, string userId)
+        {
+            return _db.Query<Vault>($"SELECT * FROM Vaults WHERE userId = @userId AND id = @vaultId", new { userId, vaultId });
+        }
 
 
     }
