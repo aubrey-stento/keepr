@@ -120,6 +120,16 @@ export default new Vuex.Store({
         .then(res => {
           console.log(res.data)
           commit('setVault', res.data)
+          dispatch('getVaults', res.data)
+        })
+    },
+
+    getVaults({ commit, dispatch }) {
+      debugger
+      api.get('/vaults')
+        .then(res => {
+          console.log(res.data)
+          commit('setVault', res.data)
         })
     }
 
