@@ -37,7 +37,6 @@
         methods: {
 
             createKeep() {
-                debugger
                 this.$store.dispatch('createKeep', this.keepData)
 
             }

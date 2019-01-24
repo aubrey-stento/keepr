@@ -45,7 +45,6 @@
                 this.$store.dispatch('deleteKeep', keep)
             },
             getKeepsByUserId(userId) {
-                debugger
                 this.$store.dipatch('getKeepsByUserId', userId)
             }
         },
