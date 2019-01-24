@@ -85,13 +85,11 @@
     },
     methods: {
       addToVault(vaultId, keep, user) {
-        debugger
         let payload = {
           keepId: keep.id,
           vaultId: vaultId,
           userId: user.id
         }
-        debugger
         // console.log(payload)
         keep.keeps++
         this.$store.dispatch("updateKeep", keep)

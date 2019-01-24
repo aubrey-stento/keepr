@@ -7,6 +7,7 @@
         <div v-for="keep in keeps" @click="setActiveKeep(keep)" class="col-4" :key="keep._id">
             <div class="card">
                 <router-link :to="{name: 'keep', params: {keepId: keep.id}}">
+                    <img :src="keep.img" height="200px">
                     <h1 class="card-title">{{keep.name}}</h1>
                 </router-link>
                 <button @click="deleteKeep(keep)">DELETE</button>

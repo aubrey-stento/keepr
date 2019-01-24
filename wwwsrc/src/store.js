@@ -111,7 +111,6 @@ export default new Vuex.Store({
     },
 
     updateKeep({ commit, dispatch }, payload) {
-      debugger
       api.put('keeps/' + payload.id, payload)
         .then(res => {
           // commit('setKeeps', res.data)

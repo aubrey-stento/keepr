@@ -36,6 +36,10 @@
         },
         mounted() {
             this.$store.dispatch("getKeepById", this.$route.params.keepId)
+            debugger
+            let keep = this.$store.state.keeps.find(k => k.id == this.$route.params.keepId)
+            keep.views++
+            this.$store.dispatch("updateKeep", keep)
         },
         computed: {
             keep() {

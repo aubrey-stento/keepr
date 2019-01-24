@@ -1,11 +1,12 @@
 <template>
-    <div class="login">
-        <form v-if="loginForm" @submit.prevent="loginUser">
+    <div class="login form-control">
+
+        <form v-if="loginForm" @submit.prevent="loginUser" class="form-group">
             <input type="email" v-model="creds.email" placeholder="email">
             <input type="password" v-model="creds.password" placeholder="password">
             <button type="submit">Login</button>
         </form>
-        <form v-else @submit.prevent="register">
+        <form v-else @submit.prevent="register" class="form-group">
             <input type="text" v-model="newUser.username" placeholder="name">
             <input type="email" v-model="newUser.email" placeholder="email">
             <input type="password" v-model="newUser.password" placeholder="password">

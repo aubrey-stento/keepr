@@ -3,9 +3,13 @@
     <div id="nav">
       <nav class="navbar navbar-expand-sm navbar-muted bg-light navColor">
         <a class="navbar-brand fab fa-kaggle" href="#/">eepr</a>
-        <a type="button" class="btn btn-default navbar-btn" href="#/login" v-if="!user.id">Sign in/Register</a>
-        <button type="button" class="btn btn-default navbar-btn" v-else="user.id" @click="logout">Logout</button>
         <a class="navbar-brand" v-if="user.id" href="#/userDash">UserDash</a>
+        <div class="auth">
+          <a type="button" class="btn btn-default navbar-btn " href="#/login" v-if="!user.id">Sign
+            in/Register</a>
+          <button type="button" class="btn btn-default navbar-btn" v-else="user.id" @click="logout">Logout</button>
+
+        </div>
       </nav>
     </div>
     <router-view />
@@ -31,7 +35,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   #app {
     font-family: "Avenir", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -51,5 +55,10 @@
 
   #nav a.router-link-exact-active {
     color: #42b983;
+  }
+
+  .auth {
+    display: flex;
+    justify-content: right
   }
 </style>
