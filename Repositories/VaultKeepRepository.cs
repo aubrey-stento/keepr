@@ -48,12 +48,13 @@ namespace keepr.Repositories
         //     ", new { vaultId });
         // }
 
-        // DELETE VAULTKEEPS BY USERID && KEEPID
+        // DELETE VAULTKEEPS
 
-        public bool DeleteVaultKeep(int vkId, string userId)
+        public bool DeleteVaultKeep(int vaultId, int keepId, string userId)
         {
-            int success = _db.Execute(@"DELETE FROM VaultKeeps WHERE id = @vkId AND userId = @userId", new { vkId, userId });
+            int success = _db.Execute($@"DELETE FROM vaultkeeps WHERE vaultId = @vaultId AND keepId = @keepId AND userId = @userId", new { vaultId, userId, keepId });
             return success != 0;
+
         }
     }
 }

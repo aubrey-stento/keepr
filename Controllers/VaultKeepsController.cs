@@ -62,15 +62,15 @@ namespace Keepr.Controllers
         //     return BadRequest();
         // }
 
-        [Authorize]
-        [HttpDelete("{vaultkeepId}")]
+        // [Authorize]
+        [HttpDelete("{vaultId}/{keepId}")]
 
         // pass the vaultid and keepid instead
 
-        public ActionResult<string> Delete(int vaultkeepId)
+        public ActionResult<string> Delete(int vaultId, int keepId)
         {
             var id = HttpContext.User.Identity.Name;
-            if (_vaultKeepRepo.DeleteVaultKeep(vaultkeepId, id))
+            if (_vaultKeepRepo.DeleteVaultKeep(vaultId, keepId, id))
             {
                 return Ok("Successfully Deleted");
             }
