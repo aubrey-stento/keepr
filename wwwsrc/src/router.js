@@ -41,6 +41,12 @@ export default new Router({
       props: true
 
     },
+    // {
+    //   path: '/keeps/:userId',
+    //   name: 'keeps',
+    //   component: keeps,
+    //   props: true
+    // },
     {
       path: "*",
       redirect: '/'

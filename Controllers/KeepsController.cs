@@ -36,9 +36,11 @@ namespace Keepr.Controllers
         }
 
         [Authorize]
-        [HttpGet("user")]
-        // GET KEEPS BY USERID
-        public ActionResult<IEnumerable<Keep>> GetKeeps()
+        [HttpGet("user/{userId}")]
+
+        // get keeps by userId
+
+        public ActionResult<IEnumerable<Keep>> GetKeeps(string userId)
         {
             var id = HttpContext.User.Identity.Name;
             IEnumerable<Keep> result = _repo.GetKeepsByUserId(id);
@@ -61,6 +63,8 @@ namespace Keepr.Controllers
         [HttpGet("{id}")]
         public ActionResult<Keep> GetKeep(int id)
         {
+            //your hitting this endpoint because in your store you need to have 'keeps/user' in your api.get
+            //see line 39    
             Keep result = _repo.GetKeepById(id);
             if (result != null)
             {

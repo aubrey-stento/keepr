@@ -140,6 +140,13 @@ export default new Vuex.Store({
           dispatch('getAllPublicKeeps', res.data)
         })
     },
+    getKeepsByUserId({ commit, dispatch }, userId) {
+      api.get('/keeps/user/' + userId)
+        .then(res => {
+          console.log(res.data)
+          commit('setKeeps', res.data)
+        })
+    },
 
 
     // VAULTS
@@ -188,15 +195,5 @@ export default new Vuex.Store({
           dispatch('getAllPublicKeeps')
         })
     },
-
-    // deletePost({ commit, dispatch }, postData) {
-    //   api.delete('posts/' + postData._id)
-    //     // @ts-ignore
-    //     .then(res => {
-    //       dispatch('getPostsByAlbumId', postData.albumId)
-    //       router.push({ name: 'album' })
-    //     })
-    // },
-
   }
 })
