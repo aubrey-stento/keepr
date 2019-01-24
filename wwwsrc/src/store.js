@@ -147,8 +147,9 @@ export default new Vuex.Store({
           commit('setKeeps', res.data)
         })
     },
-    deleteKeep({ commit, dispatch }, keep) {
-      api.delete('/keeps/' + keep.id)
+    deleteKeep({ commit, dispatch }, keepId) {
+      debugger
+      api.delete('/keeps/' + keepId)
         .then(res => {
           dispatch('getAllPublicKeeps')
         })
@@ -194,9 +195,8 @@ export default new Vuex.Store({
         })
     },
 
-
+    // delete a keep from a vault
     deleteVaultKeep({ commit, dispatch }, payload) {
-      debugger
       api.delete('vaultkeeps/' + payload.vaultId + '/' + payload.keepId)
         .then(res => {
           dispatch("getKeepsByVaultId", payload.vaultId)
