@@ -9,6 +9,7 @@
         <router-link :to="{name: 'vault', params: {vaultId: vault.id}}">
           <h1 class="card-title">{{vault.name}}</h1>
         </router-link>
+        <button @click="deleteVault(vault)">DELETE</button>
       </div>
     </div>
 
@@ -38,6 +39,9 @@
       setActiveVault(vault) {
         this.$store.commit('setActiveVault', vault)
 
+      },
+      deleteVault(vault) {
+        this.$store.dispatch('deleteVault', vault)
       }
     }
   }

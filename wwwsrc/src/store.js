@@ -86,7 +86,7 @@ export default new Vuex.Store({
       auth.delete('logout')
         .then(res => {
           commit('logout')
-          router.push({ name: 'login' })
+          router.push({ name: 'home' })
         })
     },
 
@@ -161,6 +161,13 @@ export default new Vuex.Store({
 
         })
     },
+    deleteVault({ commit, dispatch }, vault) {
+      debugger
+      api.delete('/vaults/' + vault.id)
+        .then(res => {
+          dispatch('getVaults')
+        })
+    },
 
 
     // VAULTKEEPS
@@ -168,10 +175,28 @@ export default new Vuex.Store({
     addToVault({ commit, dispatch }, payload) {
       api.post('/vaultkeeps', payload)
         .then(res => {
+          // payload.keepId.keep++
           console.log(res.data)
           commit('setVaultKeep', payload)
         })
-    }
+    },
+
+    deleteKeep({ commit, dispatch }, keep) {
+      debugger
+      api.delete('/keeps/' + keep.id)
+        .then(res => {
+          dispatch('getAllPublicKeeps')
+        })
+    },
+
+    // deletePost({ commit, dispatch }, postData) {
+    //   api.delete('posts/' + postData._id)
+    //     // @ts-ignore
+    //     .then(res => {
+    //       dispatch('getPostsByAlbumId', postData.albumId)
+    //       router.push({ name: 'album' })
+    //     })
+    // },
 
   }
 })

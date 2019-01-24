@@ -65,6 +65,8 @@ namespace Keepr.Controllers
         [Authorize]
         [HttpDelete("{vaultkeepId}")]
 
+        // pass the vaultid and keepid instead
+
         public ActionResult<string> Delete(int vaultkeepId)
         {
             var id = HttpContext.User.Identity.Name;

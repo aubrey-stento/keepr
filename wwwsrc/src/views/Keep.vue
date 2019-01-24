@@ -7,8 +7,17 @@
                 <p>Description: {{keep.description}}</p>
                 <img :src="keep.image">
                 <p class="textSpace"> <i class="far fa-eye"></i> {{keep.views}}</p>
-                <p class="textSpace"> <i class="fas fa-share"></i> {{keep.shares}}</p>
+                <!-- <p class="textSpace"> <i class="fas fa-share"></i> {{keep.shares}}</p> -->
                 <p class="textSpace"> <i class="fab fa-kaggle"></i> {{keep.keeps}}</p>
+                <div v-if="user.id" class="dropdown">
+                    <button class="btn btn-sm dropdown-toggle icon" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"><i class="fab fa-kaggle"> </i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <p class="dropdown-item action" v-for="vault in vaults" @click="addToVault(vault.id, keep, user)"
+                            :vaultData="vault" v-bind:value="vault.id">{{vault.name}}</p>
+                    </div>
+                </div>
 
             </div>
 
@@ -34,6 +43,9 @@
             },
             user() {
                 return this.$store.state.user
+            },
+            vaults() {
+                return this.$store.state.vaults
             }
         },
         methods: {
