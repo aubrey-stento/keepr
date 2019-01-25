@@ -9,7 +9,7 @@
         <router-link :to="{name: 'vault', params: {vaultId: vault.id}}">
           <h1 class="card-title">{{vault.name}}</h1>
         </router-link>
-        <button @click="deleteVault(vault)">DELETE</button>
+        <i @click="deleteVault(vault)"><i class="far fa-trash-alt"></i></i>
       </div>
     </div>
 

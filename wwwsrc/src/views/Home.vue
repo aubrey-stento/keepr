@@ -103,7 +103,7 @@
   };
 </script>
 <style>
-  /* .count {
+  .count {
     column-count: 4;
-  } */
+  }
 </style>
