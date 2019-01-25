@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
 
-            <h2>My Keeps</h2>
+            <!-- <h2>My Keeps</h2> -->
         </div>
         <div v-for="keep in keeps" @click="setActiveKeep(keep)" class="col-4" :key="keep._id">
             <div class="card">
@@ -10,7 +10,8 @@
                     <img :src="keep.img" height="200px">
                     <h1 class="card-title">{{keep.name}}</h1>
                 </router-link>
-                <button @click="deleteKeep(keep)">DELETE</button>
+
+                <button @click="deleteKeep(keep)"><i class="far fa-trash-alt"></i></button>
             </div>
         </div>
 

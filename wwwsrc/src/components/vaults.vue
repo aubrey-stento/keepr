@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
 
-      <h2>My Vaults</h2>
+
     </div>
     <div v-for="vault in vaults" @click="setActiveVault(vault)" class="col-4" :key="vault._id">
       <div class="card">

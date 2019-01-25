@@ -62,7 +62,7 @@
 </script>
 
 <style>
-    .count {
+    /* .count {
         column-count: 3;
-    }
+    } */
 </style>

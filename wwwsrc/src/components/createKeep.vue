@@ -38,6 +38,7 @@
 
             createKeep() {
                 this.$store.dispatch('createKeep', this.keepData)
+                this.$store.dispatch('getKeepsByUserId', this.user)
 
             }
         }
