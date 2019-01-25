@@ -33,7 +33,6 @@
         methods: {
 
             createVault() {
-                debugger
                 this.$store.dispatch('createVault', this.vaultData)
 
             }

@@ -36,7 +36,6 @@
         },
         mounted() {
             this.$store.dispatch("getKeepById", this.$route.params.keepId)
-            debugger
             let keep = this.$store.state.keeps.find(k => k.id == this.$route.params.keepId)
             keep.views++
             this.$store.dispatch("updateKeep", keep)
@@ -55,7 +54,17 @@
         methods: {
             updateKeep() {
                 this.$store.dispatch('updateKeep', this.keepData)
-            }
+            },
+            addToVault(vaultId, keep, user) {
+                let payload = {
+                    keepId: keep.id,
+                    vaultId: vaultId,
+                    userId: user.id
+                }
+                keep.keeps++
+                this.$store.dispatch("updateKeep", keep)
+                this.$store.dispatch('addToVault', payload)
+            },
         },
         components: {
 
