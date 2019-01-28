@@ -56,6 +56,7 @@
 </script>
 
 <style>
-
-
+    .card-title {
+        color: black
+    }
 </style>

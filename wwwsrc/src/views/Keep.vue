@@ -17,6 +17,8 @@
                         <p class="dropdown-item action" v-for="vault in vaults" @click="addToVault(vault.id, keep, user)"
                             :vaultData="vault" v-bind:value="vault.id">{{vault.name}}</p>
                     </div>
+                    <button v-if="keep.userId == user.id" @click="deleteKeep(keepId)" class="btn btn-sm icon mx-2"><i
+                            class="far fa-trash-alt"></i></button>
                 </div>
 
             </div>
@@ -49,6 +51,12 @@
             },
             vaults() {
                 return this.$store.state.vaults
+            },
+            vaultKeeps() {
+                return this.$store.state.vaultKeeps
+            },
+            keeps() {
+                return this.$store.state.keeps
             }
         },
         methods: {
@@ -65,6 +73,11 @@
                 this.$store.dispatch("updateKeep", keep)
                 this.$store.dispatch('addToVault', payload)
             },
+            deleteKeep(keepId) {
+                this.$store.dispatch('deleteKeep', keepId)
+            }
+
+
         },
         components: {
 

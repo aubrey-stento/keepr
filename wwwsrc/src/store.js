@@ -146,8 +146,8 @@ export default new Vuex.Store({
           commit('setKeeps', res.data)
         })
     },
-    deleteKeep({ commit, dispatch }, keep) {
-      api.delete('/keeps/' + keep.id)
+    deleteKeep({ commit, dispatch }, keepId) {
+      api.delete('/keeps/' + keepId)
         .then(res => {
           dispatch('getAllPublicKeeps')
         })

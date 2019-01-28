@@ -12,15 +12,17 @@
       <div class="card-columns count">
         <div v-for="keep in filteredKeeps">
           <div class="card">
-            <button v-if="keep.userId == user.id" @click="deleteKeep(keep.id)" class="btn btn-sm icon mx-2"><i class="far fa-trash-alt"></i></button>
+            <!-- <button v-if="keep.userId == user.id" @click="deleteKeep(keep.id)" class="btn btn-sm icon mx-2"><i class="far fa-trash-alt"></i></button> -->
             <router-link :to="{name: 'keep', params: {keepId: keep.id, keep: keep}}">
               <img class="imgSize" :src='keep.img' height="250px">
               <p class="textSpace">Name: {{keep.name}}</p>
               <p class="textSpace">Description: {{keep.description}}</p>
             </router-link>
-            <p class="textSpace"> <i class="far fa-eye"></i> {{keep.views}}</p>
+            <p class="textSpace"> <i class="far fa-eye"></i> {{keep.views}} <i class="fab fa-kaggle"></i>
+              {{keep.keeps}}</p>
+
             <!-- <p class="textSpace"> <i class="fas fa-share"></i> {{keep.shares}}</p> -->
-            <p class="textSpace"> <i class="fab fa-kaggle"></i> {{keep.keeps}}</p>
+            <!-- <p class="textSpace"> <i class="fab fa-kaggle"></i> {{keep.keeps}}</p> -->
 
 
             <div v-if="user.id" class="dropdown">
@@ -105,5 +107,9 @@
 <style>
   .count {
     column-count: 4;
+  }
+
+  .textSpace {
+    color: black;
   }
 </style>
