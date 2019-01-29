@@ -6,7 +6,7 @@
             <div class="card-columns-count">
                 <div v-for="keep in activeVault.keeps">
                     <div class="card">
-                        <img class="imgSize" :src='keep.img' height="250px">
+                        <img class="imgSize" :src='keep.img' height="250px" width="auto">
                         <p class="textSpace">Name: {{keep.name}}</p>
                         <p class="textSpace">Description: {{keep.description}}</p>
                         <p class="textSpace"> <i class="far fa-eye"></i> {{keep.views}}</p>
